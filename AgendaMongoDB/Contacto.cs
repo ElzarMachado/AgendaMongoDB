@@ -23,5 +23,16 @@ namespace AgendaMongoDB
         [BsonElement("phone")]
         public string Phone { get; set; } = string.Empty;
 
+        //Sobreescribir el ToString
+        public void ToString()
+        {
+
+        }
+
+        public override string ToString()
+        {
+            return $"El contacto {Name} con Id {Id} tiene el numero de telefono {Phone}"
+        }
+
     }
 }

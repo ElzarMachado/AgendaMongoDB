@@ -1,6 +1,7 @@
 ﻿using AgendaMongoDB;
 using MongoDB.Driver;
 
+//Conectar a la base de datos
 MongoClient client = new MongoClient("mongodb://localhost:27017");
 IMongoDatabase database = client.GetDatabase("agenda");
 IMongoCollection<Contacto> collection = database.GetCollection<Contacto>("contactos");
@@ -21,12 +22,12 @@ contacto2.Phone= "1234567890";
 Insert(contacto2);
 
 Contacto contactoEncontrado = FindByName("Putter");
-Console.WriteLine(contactoEncontrado.Id);
+Console.WriteLine(contactoEncontrado.ToString());
 
 
 foreach(Contacto c in Get())
 {
-    Console.WriteLine(c.Name);
+    Console.WriteLine(c.ToString());
 }
 
 void Insert(Contacto contacto)
@@ -43,4 +44,9 @@ Contacto FindByName(string name)
 List<Contacto> Get()
 {
     return collection.Find(c => true).ToList();
+}
+
+void Update(string id, Contacto contacto )
+{
+    Contacto ContactoActualizar =  ;
 }
